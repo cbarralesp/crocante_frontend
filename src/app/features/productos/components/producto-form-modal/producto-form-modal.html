@@ -1,0 +1,37 @@
+<app-modal titulo="Nuevo producto" (cerrar)="cancelar.emit()">
+  <form [formGroup]="form" (ngSubmit)="enviar()" novalidate class="formulario">
+    <div class="campo">
+      <label for="pf-nombre">Nombre</label>
+      <input id="pf-nombre" class="entrada" type="text" formControlName="nombre" maxlength="120" />
+      @if (mostrarError('nombre')) {
+        <p class="error-campo">El nombre es obligatorio.</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="pf-categoria">Categoría</label>
+      <select id="pf-categoria" class="entrada" formControlName="categoriaId">
+        <option [ngValue]="null" disabled>Selecciona una categoría</option>
+        @for (categoria of categorias(); track categoria.id) {
+          <option [ngValue]="categoria.id">{{ categoria.nombre }}</option>
+        }
+      </select>
+      @if (mostrarError('categoriaId')) {
+        <p class="error-campo">Debes elegir una categoría.</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="pf-precio">Precio</label>
+      <input id="pf-precio" class="entrada" type="number" min="1" step="1" formControlName="precio" />
+      @if (mostrarError('precio')) {
+        <p class="error-campo">Ingresa un precio mayor a 0.</p>
+      }
+    </div>
+
+    <div class="modal-pie">
+      <button type="button" class="btn btn-secundario" (click)="cancelar.emit()">Cancelar</button>
+      <button type="submit" class="btn btn-primario">Guardar</button>
+    </div>
+  </form>
+</app-modal>

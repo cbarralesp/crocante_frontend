@@ -1,0 +1,78 @@
+/* Layout de la pantalla: cabecera arriba, categorías a la izquierda y listado a la derecha. */
+.pagina {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.pagina-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.pagina-cabecera h1 {
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.1;
+  margin: 4px 0 8px;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.pagina-cuerpo {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.listado {
+  padding: 24px;
+}
+
+.listado-cabecera {
+  margin-bottom: 18px;
+}
+
+.listado-cabecera h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  margin: 2px 0 0;
+}
+
+.contador {
+  background: var(--acento-suave);
+  color: var(--acento);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 11px;
+  border-radius: 999px;
+}
+
+.confirmacion-texto {
+  margin: 0 0 8px;
+}
+
+@media (max-width: 880px) {
+  .pagina {
+    padding: 20px 16px 48px;
+  }
+
+  .pagina-cuerpo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .pagina-cabecera {
+    flex-direction: column;
+  }
+}

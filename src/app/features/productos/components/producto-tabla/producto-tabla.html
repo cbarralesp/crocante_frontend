@@ -1,0 +1,32 @@
+<div class="tabla-contenedor">
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (producto of productos(); track producto.id) {
+        <tr>
+          <td>
+            <div class="producto-celda">
+              <span class="producto-icono">{{ inicial(producto) }}</span>
+              <span class="producto-nombre">{{ producto.nombre }}</span>
+            </div>
+          </td>
+          <td>{{ nombreCategoria(producto.categoriaId) }}</td>
+          <td class="precio">{{ producto.precio | clp }}</td>
+          <td>
+            <span class="estado" [class.estado-inactivo]="!producto.disponible">
+              <span class="estado-punto"></span>
+              {{ producto.disponible ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

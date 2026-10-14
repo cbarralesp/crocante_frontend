@@ -1,0 +1,48 @@
+<main class="pagina">
+  <header class="pagina-cabecera">
+    <div>
+      <p class="sobretitulo">Crocante</p>
+      <h1>Productos</h1>
+      <p class="subtitulo">Registra los productos de tu local de comida rápida y organízalos por categoría.</p>
+    </div>
+    <button type="button" class="btn btn-primario" (click)="nuevoProducto()">
+      <span aria-hidden="true">+</span> Nuevo producto
+    </button>
+  </header>
+
+  <div class="pagina-cuerpo">
+    <app-categoria-panel
+      [categorias]="store.categorias()"
+      [conteos]="store.conteoPorCategoria()"
+      [total]="store.productos().length"
+      [activa]="store.categoriaActiva()"
+      (seleccionar)="store.seleccionarCategoria($event)"
+    />
+
+    <section class="tarjeta listado">
+      <header class="listado-cabecera">
+        <div>
+          <p class="sobretitulo">Productos registrados</p>
+          <h2>Listado de productos <span class="contador">{{ store.productosVisibles().length }}</span></h2>
+        </div>
+      </header>
+
+      @if (store.cargando()) {
+        <p class="vacio">Cargando productos…</p>
+      } @else if (store.productosVisibles().length === 0) {
+        <p class="vacio">No hay productos en esta categoría. Usa «Nuevo producto» para agregar el primero.</p>
+      } @else {
+        <app-producto-tabla [productos]="store.productosVisibles()" [categorias]="store.categorias()" />
+      }
+    </section>
+  </div>
+</main>
+
+@if (formularioAbierto()) {
+  <app-producto-form-modal
+    [categorias]="store.categorias()"
+    [categoriaInicial]="store.categoriaActiva()"
+    (guardar)="guardarProducto($event)"
+    (cancelar)="cerrarFormulario()"
+  />
+}

@@ -1,0 +1,24 @@
+<section class="tarjeta panel-categorias">
+  <header class="panel-cabecera">
+    <h2>Categorías</h2>
+  </header>
+
+  <ul class="lista-categorias">
+    <li>
+      <button type="button" class="categoria" [class.categoria-activa]="activa() === null" (click)="seleccionar.emit(null)">
+        <span class="punto"></span>
+        <span class="categoria-nombre">Todos</span>
+        <span class="categoria-total">{{ total() }}</span>
+      </button>
+    </li>
+    @for (categoria of categorias(); track categoria.id) {
+      <li>
+        <button type="button" class="categoria" [class.categoria-activa]="activa() === categoria.id" (click)="seleccionar.emit(categoria.id)">
+          <span class="punto"></span>
+          <span class="categoria-nombre">{{ categoria.nombre }}</span>
+          <span class="categoria-total">{{ conteos()[categoria.id] ?? 0 }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+</section>
