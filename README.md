@@ -1,11 +1,11 @@
-# crocante-frontend
+# crocante_frontend
 
-Pantalla Angular 21 del sistema de venta de comida rápida **Crocante**. Lista los productos por categoría y permite guardar productos nuevos. Se conecta al backend `crocante-backend` (Spring Boot, puerto 8080).
+Pantalla Angular 21 del sistema de venta de comida rápida **Crocante**. Lista los productos por categoría y permite guardar productos nuevos. Se conecta al backend https://github.com/cbarralesp/crocante_backend (Spring Boot, puerto 8080).
 
 ## Requisitos
 
 - Node.js LTS (22 o superior) y npm.
-- El backend `crocante-backend` en ejecución en `http://localhost:8080` (ver su README, desde el `paso-05`).
+- El backend `crocante_backend` en ejecución en `http://localhost:8080` (ver su README, desde el `paso-05`).
 
 ## Levantar en local
 
